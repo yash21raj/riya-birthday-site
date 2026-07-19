@@ -69,9 +69,16 @@ if (photo) {
     showImage();
 
     nextBtn.addEventListener("click", () => {
-        imageIndex = (imageIndex + 1) % images.length;
-        showImage();
-    });
+
+    if (imageIndex === images.length - 1) {
+        window.location.href = "videos.html";
+        return;
+    }
+
+    imageIndex++;
+    showImage();
+
+});
 
     prevBtn.addEventListener("click", () => {
         imageIndex = (imageIndex - 1 + images.length) % images.length;
