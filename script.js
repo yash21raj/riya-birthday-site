@@ -52,43 +52,32 @@ for (let i = 1; i <= 21; i++) {
 let imageIndex = 0;
 
 const photo = document.getElementById("galleryImage");
+const currentPhoto = document.getElementById("currentPhoto");
+const totalPhotos = document.getElementById("totalPhotos");
+const nextBtn = document.getElementById("nextBtn");
+const prevBtn = document.getElementById("prevBtn");
 
 if (photo) {
 
-    const counter = document.getElementById("counter");
+    totalPhotos.textContent = images.length;
 
     function showImage() {
         photo.src = images[imageIndex];
-        counter.innerHTML = `${imageIndex + 1} / ${images.length}`;
+        currentPhoto.textContent = imageIndex + 1;
     }
 
     showImage();
 
-    document.getElementById("next").onclick = function () {
-
-        imageIndex++;
-
-        if (imageIndex >= images.length)
-            imageIndex = 0;
-
+    nextBtn.addEventListener("click", () => {
+        imageIndex = (imageIndex + 1) % images.length;
         showImage();
-    };
+    });
 
-    document.getElementById("prev").onclick = function () {
-
-        imageIndex--;
-
-        if (imageIndex < 0)
-            imageIndex = images.length - 1;
-
+    prevBtn.addEventListener("click", () => {
+        imageIndex = (imageIndex - 1 + images.length) % images.length;
         showImage();
-    };
-
-    document.getElementById("continueGallery").onclick = function () {
-        window.location.href = "videos.html";
-    };
+    });
 }
-
 // ---------------- VIDEOS ----------------
 
 const videos = [];
