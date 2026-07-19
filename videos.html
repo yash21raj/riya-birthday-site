@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Special Videos ❤️</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body class="video-page">
+
+<div class="video-box">
+
+<h1>🎥 Our Beautiful Memories ❤️</h1>
+
+<p>Every video is a memory worth reliving.</p>
+
+<div class="player">
+
+<video id="videoPlayer" controls autoplay>
+
+<source src="assets/video/video1.mp4">
+
+</video>
+
+</div>
+
+<div class="counter">
+
+Video <span id="currentVideo">1</span> / 5
+
+</div>
+
+<div class="controls">
+
+<button onclick="previousVideo()">⬅ Previous</button>
+
+<button onclick="nextVideo()">Next ➡</button>
+
+</div>
+
+<button class="continue-btn"
+onclick="window.location.href='cake.html'">
+
+🎂 Continue
+
+</button>
+
+</div>
+
+<script>
+
+const videos=[
+
+"assets/video/video1.mp4",
+"assets/video/video2.mp4",
+"assets/video/video3.mp4",
+"assets/video/video4.mp4",
+"assets/video/video5.mp4"
+
+];
+
+let index=0;
+
+const player=document.getElementById("videoPlayer");
+
+const counter=document.getElementById("currentVideo");
+
+function loadVideo(){
+
+player.src=videos[index];
+
+counter.innerHTML=index+1;
+
+player.load();
+
+player.play();
+
+}
+
+function nextVideo(){
+
+index++;
+
+if(index>=videos.length)
+
+index=0;
+
+loadVideo();
+
+}
+
+function previousVideo(){
+
+index--;
+
+if(index<0)
+
+index=videos.length-1;
+
+loadVideo();
+
+}
+
+player.addEventListener("ended",()=>{
+
+nextVideo();
+
+});
+
+</script>
+
+</body>
+</html>
